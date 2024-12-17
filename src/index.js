@@ -1,4 +1,5 @@
 import app from "./app.js";
+import { PORT } from "./config.js";
 
-app.listen(process.env.PORT);
+app.listen(PORT);
 console.log("Servidor iniciado");

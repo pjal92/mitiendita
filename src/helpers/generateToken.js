@@ -1,25 +1,23 @@
 import jwt from "jsonwebtoken";
-import "dotenv/config";
+import { JWT_SECRET, JWT_EXPIRES } from "../config.js"
 
-export const tokenSign = async (codigo, role) => {
+export const tokenSign = async (codigo, rol) => {
   return jwt.sign(
     {
       id: codigo,
-      rol: role,
+      rol: rol,
     },
-    process.env.JWT_SECRET,
+    JWT_SECRET,
     {
-      expiresIn: "24h",
+      expiresIn: JWT_EXPIRES,
     }
   );
 };
 
 export const verifyToken = async (token) => {
   try {
-    return jwt.verify(token, process.env.JWT_SECRET);
+    return jwt.verify(token, JWT_SECRET);
   } catch (error) {
     return null;
   }
 };
-
-export const decodeSign = (token) => {};
