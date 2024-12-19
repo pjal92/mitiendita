@@ -10,9 +10,9 @@ import { checkRolAuth } from "../middleware/rolAuth.js";
 
 const router = Router();
 
-router.get("/productos", checkAuth, checkRolAuth(['Administrador', 'Digitador',  'Comprador']), getProductos);
-router.get("/productos/:id", checkAuth, checkRolAuth(['Administrador', 'Digitador',  'Comprador']), getProducto);
-router.post("/productos", checkAuth, checkRolAuth(['Administrador', 'Digitador']), crearProducto);
-router.put("/productos/:id", checkAuth, checkRolAuth(['Administrador', 'Digitador']), actualizarProducto);
+router.get("/productos", checkAuth, checkRolAuth(['Operador','Cliente']), getProductos);
+router.get("/productos/:id", checkAuth, checkRolAuth(['Operador', 'Cliente']), getProducto);
+router.post("/productos", checkAuth, checkRolAuth(['Operador']), crearProducto);
+router.put("/productos/:id", checkAuth, checkRolAuth(['Operador']), actualizarProducto);
 
 export default router;
